@@ -1,5 +1,24 @@
 ---
+import '../styles/global.css';
 
+const pageTitle = "关于";
+
+const identity = {
+    nickname: "mtueih",
+    country: "中国",
+    occupation: "Web开发者",
+    hobbies: [ "编程", "音乐", "影视" ],
+};
+
+const skills = [ "HTML", "CSS", "JavaScript", "Python", "C++", "C", "Perl", "LISP" ];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textTransform = "uppercase";
 ---
 
 <html lang="zh-CN">
@@ -8,17 +27,50 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>关于 - 我的博客网站</title>
+		<title>{pageTitle} - 我的博客网站</title>
+
+        <style define:vars={{ skillColor, fontWeight, textTransform }}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textTransform);
+            }
+        </style>
 	</head>
 	<body>
         <a href="/">主页</a>
-		<a href="/blog">博客</a>
-		<a href="/about">关于</a>
+		<a href="/blog/">博客</a>
+		<a href="/about/">关于</a>
 
-		<h1>关于</h1>
+		<h1>{pageTitle}</h1>
+
         <h2>关于本站</h2>
         <p>这是一个使用 Astro 构建的示例网站，展示了 Astro 的功能和优势。</p>
+
         <h2>关于我</h2>
         <p>我是一个 Web 开发者，喜欢使用 Astro 构建网站。</p>
+        <p>以下是我的基本信息：</p>
+        <ul>
+            <li>我的昵称是{identity.nickname}。</li>
+            <li>我居住在{identity.country}，我的职业是{identity.occupation}。</li>
+            {
+                identity.hobbies.length > 2 &&
+                <li>我的其中两个爱好是：{identity.hobbies[0]}和{identity.hobbies[1]}</li>
+            }
+        </ul>
+        <p>我的技能包括：</p>
+        <ul>
+            { skills.map((skill) => <li class="skill">{skill}</li>) }
+        </ul>
+        { happy && <p>我很高兴能学习 Astro！</p> }
+        { finished && <p>我完成了这个教程！</p> }
+        { goal == 3
+            ? <p>我的目标是三天内完成。</p>
+            : <p>我的目标不是三天。</p>
+        }
 	</body>
 </html>
