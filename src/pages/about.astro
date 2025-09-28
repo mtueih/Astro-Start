@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "关于";
 
@@ -18,35 +18,21 @@ const goal = 3;
 
 const skillColor = "navy";
 const fontWeight = "bold";
-const textTransform = "uppercase";
+const textCase = "uppercase";
 ---
-
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle} - 我的博客网站</title>
-
-        <style define:vars={{ skillColor, fontWeight, textTransform }}>
-            h1 {
-                color: purple;
-                font-size: 4rem;
-            }
-            .skill {
-                color: var(--skillColor);
-                font-weight: var(--fontWeight);
-                text-transform: var(--textTransform);
-            }
-        </style>
-	</head>
-	<body>
-        <a href="/">主页</a>
-		<a href="/blog/">博客</a>
-		<a href="/about/">关于</a>
-
-		<h1>{pageTitle}</h1>
+<style is:global define:vars={{skillColor, fontWeight, textCase}}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
+<BaseLayout pageTitle={pageTitle}>
+    <h1>{pageTitle}</h1>
 
         <h2>关于本站</h2>
         <p>这是一个使用 Astro 构建的示例网站，展示了 Astro 的功能和优势。</p>
@@ -72,5 +58,4 @@ const textTransform = "uppercase";
             ? <p>我的目标是三天内完成。</p>
             : <p>我的目标不是三天。</p>
         }
-	</body>
-</html>
+</BaseLayout>

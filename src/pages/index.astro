@@ -1,23 +1,9 @@
 ---
-import '../styles/global.css';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "主页";
 ---
-
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle} - 我的博客网站</title>
-	</head>
-	<body>
-		<a href="/">主页</a>
-		<a href="/blog/">博客</a>
-		<a href="/about/">关于</a>
-
-		<h1>我的博客网站</h1>
-
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+	<h1>我的博客网站</h1>
+	<h2>我的超赞博客副标题</h2>
+</BaseLayout>

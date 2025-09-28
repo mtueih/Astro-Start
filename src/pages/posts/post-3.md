@@ -1,4 +1,5 @@
 ---
+layout: "../../layouts/MarkdownPostLayout.astro"
 title: "我的第三篇博客"
 pubDate: 2025-09-27
 description: "虽然遇到了一些挑战，但向社区求助真的帮了大忙！"

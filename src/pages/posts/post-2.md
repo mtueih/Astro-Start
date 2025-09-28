@@ -1,4 +1,5 @@
 ---
+layout: "../../layouts/MarkdownPostLayout.astro"
 title: "我的第二篇博客"
 pubDate: 2025-09-27
 description: "学习Astro后，我停不下来！"
